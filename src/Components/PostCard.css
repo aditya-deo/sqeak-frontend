@@ -1,0 +1,29 @@
+.postCard {
+  -webkit-box-shadow: 9px 7px 12px -3px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: 9px 7px 12px -3px rgba(0, 0, 0, 0.14);
+  box-shadow: 9px 7px 12px -3px rgba(0, 0, 0, 0.14);
+  margin: 25px;
+        padding: 10px;
+  width: 95%;
+}
+
+.title{
+    font-weight: 900;
+    font-size: xx-large;
+        padding: 10px;
+        margin: 15px;
+}
+
+.author{
+    font-weight: 300;
+    font-size: large;
+        padding: 10px;
+        margin: 15px;
+}
+
+.desc{
+        font-weight: 300;
+        font-size: medium;
+        margin: 5px 15px;
+        padding: 10px;
+}
