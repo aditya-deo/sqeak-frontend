@@ -1,12 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { posts } from "./Posts";
 import "./Post.css";
+import axios from "axios";
 
 const Post = () => {
   const location = useLocation();
-  const id = parseInt(location.pathname.slice(6));
-  const postToDisp = posts[id - 1];
+  const id = location.pathname.slice(6);
+  const [postToDisp, setPostToDisp] = useState({
+    title: "Loading...",
+    author: "",
+    desc: "",
+    content: "",
+    id: "",
+  });
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/read", {
+        params: {
+          id: id,
+        },
+      })
+      .then((res) => {
+        setPostToDisp(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [id]);
   return (
     <div className="Post">
       <div className="post__title">{postToDisp.title}</div>
