@@ -14,6 +14,8 @@ const Content = () => {
       content: "",
     },
   ]);
+
+  const [joke, setJoke] = useState("A joke might appear here soon...");
   useEffect(() => {
     axios
       .get("http://localhost:5000/cards")
@@ -23,6 +25,14 @@ const Content = () => {
       })
       .catch((error) => {
         console.log(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get("https://v2.jokeapi.dev/joke/Any?safe-mode&type=single")
+      .then((res) => {
+        setJoke(res.data.joke);
       });
   }, []);
 
@@ -42,7 +52,7 @@ const Content = () => {
           );
         })}
       </div>
-      <div className="filter">Post Filters Coming Soon...</div>
+      <div className="filter">{joke}</div>
     </div>
   );
 };
