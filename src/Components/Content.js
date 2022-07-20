@@ -18,7 +18,7 @@ const Content = () => {
   const [joke, setJoke] = useState("A joke might appear here soon...");
   useEffect(() => {
     axios
-      .get("http://localhost:5000/cards")
+      .get("/cards")
       .then((res) => {
         // console.log(res);
         setPOSTCARDS(res.data.reverse());

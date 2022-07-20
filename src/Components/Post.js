@@ -15,7 +15,7 @@ const Post = () => {
   });
   useEffect(() => {
     axios
-      .get("http://localhost:5000/read", {
+      .get("/read", {
         params: {
           id: id,
         },

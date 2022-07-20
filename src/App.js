@@ -9,17 +9,21 @@ import {
 } from "react-router-dom";
 import Post from "./Components/Post";
 import Write from "./Components/Write";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Login from "./Components/Login";
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [displayName, setDisplayName] = useState(null);
+  useEffect(() => {
+    if (localStorage.getItem("sqeak_displayName") != null)
+      setDisplayName(localStorage.getItem("sqeak_displayName"));
+  }, []);
   return (
     <Router>
       <div className="app">
-        {user ? (
+        {displayName ? (
           <>
-            <Navbar />
+            <Navbar setDisplayName={setDisplayName} />
             <Routes>
               <Route path="/" element={<Content />}></Route>
               <Route path="/read" element={<Navigate to="/" />} />
@@ -28,7 +32,7 @@ function App() {
             </Routes>
           </>
         ) : (
-          <Login setUser={setUser} />
+          <Login setDisplayName={setDisplayName} />
         )}
       </div>
     </Router>

@@ -1,9 +1,14 @@
 import React from "react";
 import "./Navbar.css";
 import { Link, useLocation } from "react-router-dom";
+import "../firebase";
 
-const Navbar = () => {
+const Navbar = (props) => {
   const location = useLocation();
+  const handleLogout = (e) => {
+    props.setDisplayName(null);
+    localStorage.removeItem("sqeak_displayName");
+  };
   return (
     <div className="navbar">
       {location.pathname === "/write" ? (
@@ -38,7 +43,10 @@ const Navbar = () => {
         <div className="appName">Sqeak</div>
       </Link>
 
-      <div className="userName">Aditya Deo</div>
+      <div className="userName" onClick={handleLogout}>
+        {localStorage.getItem("sqeak_displayName")}
+        <span class="tooltiptext">Logout</span>
+      </div>
     </div>
   );
 };

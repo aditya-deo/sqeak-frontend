@@ -1,8 +1,22 @@
 import React from "react";
 import "./Login.css";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import "../firebase";
 const Login = (props) => {
+  const provider = new GoogleAuthProvider();
   const handleLogin = (e) => {
-    console.log("login button clicked");
+    const auth = getAuth();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const user = result.user;
+        props.setDisplayName(user.displayName);
+        localStorage.setItem("sqeak_displayName", user.displayName);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, " : ", errorMessage);
+      });
   };
   return (
     <div className="landingPage">

@@ -7,12 +7,12 @@ import "./Write.css";
 const Write = () => {
   const [goHome, setGoHome] = useState(false);
   const [title, setTitle] = useState("");
-  const [author] = useState("Aditya Deo");
+  const [author] = useState(localStorage.getItem("sqeak_displayName"));
   const [desc, setDesc] = useState("");
   const [content, setContent] = useState("");
   const handleButtonClick = (e) => {
     axios
-      .post("http://localhost:5000/publish", {
+      .post("/publish", {
         id: uniqid(),
         title: title,
         author: author,
