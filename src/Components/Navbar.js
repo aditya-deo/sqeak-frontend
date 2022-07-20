@@ -45,7 +45,7 @@ const Navbar = (props) => {
 
       <div className="userName" onClick={handleLogout}>
         {localStorage.getItem("sqeak_displayName")}
-        <span class="tooltiptext">Logout</span>
+        <span className="tooltiptext">Logout</span>
       </div>
     </div>
   );

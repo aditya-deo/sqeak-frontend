@@ -3,6 +3,7 @@ import PostCard from "./PostCard";
 import "./Content.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import uniqid from "uniqid";
 
 const Content = () => {
   const [POSTCARDS, setPOSTCARDS] = useState([
@@ -14,16 +15,14 @@ const Content = () => {
       content: "",
     },
   ]);
-
   const [joke, setJoke] = useState("A joke might appear here soon...");
   useEffect(() => {
     axios
       .get("/cards")
       .then((res) => {
         // console.log(res);
-        var newData = res.data;
-        newData.reverse();
-        setPOSTCARDS(newData);
+        // newData.reverse();
+        setPOSTCARDS(res.data.reverse());
       })
       .catch((error) => {
         console.log(error);
@@ -49,7 +48,7 @@ const Content = () => {
               to={`/read/${post.id}`}
               style={{ color: "black", textDecoration: "none" }}
             >
-              <PostCard post={post} />
+              <PostCard key={uniqid()} post={post} />
             </Link>
           );
         })}
