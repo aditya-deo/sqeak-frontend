@@ -21,7 +21,8 @@ const Content = () => {
       .get("/cards")
       .then((res) => {
         // console.log(res);
-        setPOSTCARDS(res.data.reverse());
+        const newData = res.data.reverse();
+        setPOSTCARDS(res.data);
       })
       .catch((error) => {
         console.log(error);
