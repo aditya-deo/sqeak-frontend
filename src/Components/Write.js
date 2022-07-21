@@ -12,7 +12,7 @@ const Write = () => {
   const [content, setContent] = useState("");
   const handleButtonClick = (e) => {
     axios
-      .post("/publish", {
+      .post("https://nameless-ocean-31306.herokuapp.com/api/publish", {
         id: uniqid(),
         title: title,
         author: author,

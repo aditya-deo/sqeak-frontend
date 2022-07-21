@@ -15,21 +15,21 @@ const Content = () => {
       content: "",
     },
   ]);
+
   const [joke, setJoke] = useState("A joke might appear here soon...");
   useEffect(() => {
     axios
-      .get("/cards")
+      .get("https://nameless-ocean-31306.herokuapp.com/api/cards")
       .then((res) => {
-        // console.log(res);
+        console.log(res.data);
         // newData.reverse();
-        setPOSTCARDS(res.data.reverse());
+        let receivedData = res.data;
+        setPOSTCARDS(receivedData);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
 
-  useEffect(() => {
     axios
       .get("https://v2.jokeapi.dev/joke/Any?safe-mode&type=single")
       .then((res) => {

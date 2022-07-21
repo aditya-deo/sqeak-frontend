@@ -15,7 +15,7 @@ const Post = () => {
   });
   useEffect(() => {
     axios
-      .get("/read", {
+      .get("https://nameless-ocean-31306.herokuapp.com/api/read", {
         params: {
           id: id,
         },
