@@ -6,15 +6,7 @@ import axios from "axios";
 import uniqid from "uniqid";
 
 const Content = () => {
-  const [POSTCARDS, setPOSTCARDS] = useState([
-    {
-      _id: 0,
-      title: "",
-      author: "",
-      desc: "",
-      content: "",
-    },
-  ]);
+  const [POSTCARDS, setPOSTCARDS] = useState([]);
 
   const [joke, setJoke] = useState("A joke might appear here soon...");
   useEffect(() => {
@@ -40,18 +32,22 @@ const Content = () => {
   return (
     <div className="content">
       <div className="posts">
-        {POSTCARDS.map((post) => {
-          return (
-            <Link
-              key={post.id}
-              className="postLink"
-              to={`/read/${post.id}`}
-              style={{ color: "black", textDecoration: "none" }}
-            >
-              <PostCard key={uniqid()} post={post} />
-            </Link>
-          );
-        })}
+        {POSTCARDS.length > 0 ? (
+          POSTCARDS.map((post) => {
+            return (
+              <Link
+                key={post.id}
+                className="postLink"
+                to={`/read/${post.id}`}
+                style={{ color: "black", textDecoration: "none" }}
+              >
+                <PostCard key={uniqid()} post={post} />
+              </Link>
+            );
+          })
+        ) : (
+          <></>
+        )}
       </div>
       <div className="filter">{joke}</div>
     </div>
