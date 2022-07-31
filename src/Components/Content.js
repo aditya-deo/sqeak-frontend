@@ -4,6 +4,7 @@ import "./Content.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import uniqid from "uniqid";
+import { Rings } from "react-loader-spinner";
 
 const Content = () => {
   const [POSTCARDS, setPOSTCARDS] = useState([]);
@@ -46,7 +47,7 @@ const Content = () => {
             );
           })
         ) : (
-          <></>
+          <Rings color="black" height={80} width={80}></Rings>
         )}
       </div>
       <div className="filter">{joke}</div>
