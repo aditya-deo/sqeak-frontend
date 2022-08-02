@@ -9,7 +9,7 @@ import { Rings } from "react-loader-spinner";
 const Content = () => {
   const [POSTCARDS, setPOSTCARDS] = useState([]);
 
-  const [joke, setJoke] = useState("A joke might appear here soon...");
+  const [joke, setJoke] = useState("A wild joke will appear soon...");
   useEffect(() => {
     axios
       .get("https://nameless-ocean-31306.herokuapp.com/api/cards")
